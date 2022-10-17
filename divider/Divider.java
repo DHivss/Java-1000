@@ -5,14 +5,22 @@ import java.io.*;
 
 public class Divider{
     public static void main(String[] argv) throws IOException{
-        Scanner sc = new Scanner(new File("input.txt"));
-        int a= sc.nextInt(), b= sc.nextInt();
-        while(a != b){
-            if(a > b) a = a - b;
-            else b = b - a;
+        try {
+            FileOutputStream fos = new FileOutputStream("output.txt");
+            FileReader fr = new FileReader("input.txt");
+            Scanner n = new Scanner(fr);
+            Integer a = n.nextInt();
+            Integer b = n.nextInt();
+            Integer nod = 0;
+            while(a != b){
+                if(a > b) a = a - b;
+                else b = b - a;
+
+            }
+            n.close();
+            fos.write(String.valueOf(a).getBytes());
+            fos.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        PrintWriter pw = new PrintWriter(new File("output.txt"));
-        pw.print(a);
-        pw.close();
-    }
-}
+}}
