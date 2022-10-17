@@ -5,19 +5,24 @@ import java.util.*;
 
 public class Nutlets {
     public static void main(String[] args) throws IOException {
-        String symbol;
-        ArrayList<Integer> number = new ArrayList<>();
-        String str;
-        FileReader file = new FileReader("input.txt");
-        Scanner sc = new Scanner(file);
-        str = sc.nextLine();
-        StringTokenizer st = new StringTokenizer(str, " ");
-        while(st.hasMoreTokens()){
-            number.add(Integer.valueOf(st.nextToken()));
+        try {
+            FileOutputStream fos = new FileOutputStream("output.txt");
+            FileReader fr = new FileReader("input.txt");
+            Scanner n = new Scanner(fr);
+            String[] str = n.nextLine().split(" ");
+            int[] arr = new int[3];
+            for (int i = 0; i < arr.length; i++){
+                arr[i] = Integer.valueOf(str[i]);
+            }
+            n.close();
+            if ((arr[0]*arr[1]) >= arr[2]) {
+                fos.write("YES".getBytes());
+            } else {
+                fos.write("NO".getBytes());
+            }
+            fos.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        symbol = (number.get(0) * number.get(1) >= number.get(2)) ? "YES" : "NO";
-        FileWriter fileOut = new FileWriter("output.txt");
-        fileOut.write(symbol);
-        fileOut.close();
     }
 }

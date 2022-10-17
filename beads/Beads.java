@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Beads {
     public static void main(String[] args) throws IOException {
         try {
-            FileOutputStream fos = new FileOutputStream("C:\\Users\\даша\\Documents\\src\\com.company\\oop\\src\\task\\task4\\output.txt");
-            FileReader fr = new FileReader("C:\\Users\\даша\\Documents\\src\\com.company\\oop\\src\\task\\task4\\input.txt");
+            FileOutputStream fos = new FileOutputStream("output.txt");
+            FileReader fr = new FileReader("input.txt");
             Scanner n = new Scanner(fr);
             Integer a = n.nextInt();
             a += 1;
