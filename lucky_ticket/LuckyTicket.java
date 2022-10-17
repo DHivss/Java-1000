@@ -5,19 +5,20 @@ import java.util.*;
 
 public class LuckyTicket {
     public static void main(String[] args) throws IOException {
-        ArrayList<Integer> data = new ArrayList<>();
-        String result;
-        String str;
-        FileReader file = new FileReader("input.txt");
-        Scanner sc = new Scanner(file);
-        str = sc.nextLine();
-        char[] symbols = str.toCharArray();
-        for (char symbol : symbols) {
-            data.add(Character.getNumericValue(symbol));
-        }
-        result = (data.get(0) + data.get(1) + data.get(2) == data.get(3) + data.get(4) + data.get(5)) ? "YES" : "NO";
-        FileWriter fileOut = new FileWriter("output.txt");
-        fileOut.write(result);
-        fileOut.close();
+        try {
+            FileOutputStream fos = new FileOutputStream("output.txt");
+            FileReader fr = new FileReader("input.txt");
+            Scanner n = new Scanner(fr);
+            String str = n.nextLine();
+            int[] arr = new int[6];
+            n.close();
+            for (int i = 0; i < 6; i++){
+                arr[i] = Integer.valueOf(str.charAt(i));
+            }
+            fos.write((arr[0]+arr[1]+arr[2] == arr[3]+arr[4]+arr[5]) ?
+                    "YES".getBytes(): "NO".getBytes());
+            fos.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
     }
 }
