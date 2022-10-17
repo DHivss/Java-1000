@@ -4,22 +4,22 @@ import java.io.*;
 import java.util.*;
 public class Summ {
     public static void main(String[] args) throws IOException {
-        ArrayList<Integer> numeric = new ArrayList<>();
-        int s = 0;
-        String str;
-        FileReader fin = new FileReader("input.txt"); // Получение чисел из файла
-        Scanner sc = new Scanner(fin);
-        str = sc.nextLine();
-        StringTokenizer st = new StringTokenizer(str, " ");
-        while(st.hasMoreTokens()){
-            int a = Integer.valueOf(st.nextToken());
-            numeric.add(a);
+        try {
+            FileOutputStream fos = new FileOutputStream("C:\\Users\\даша\\Documents\\src\\com.company\\oop\\src\\task\\task4\\output.txt");
+            FileReader fr = new FileReader("C:\\Users\\даша\\Documents\\src\\com.company\\oop\\src\\task\\task4\\input.txt");
+            Scanner n = new Scanner(fr);
+            String[] str = n.nextLine().split(" ");
+            Integer[] arr = new Integer[str.length];
+            Integer s = 0;
+            for(int i = 0; i < str.length; i++){
+                arr[i] = Integer.valueOf(str[i]);
+                s += arr[i];
+            }
+            n.close();
+            fos.write(String.valueOf(s).getBytes());
+            fos.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        for (Integer aNumeric : numeric) {
-            s += aNumeric;
-        }
-        FileWriter countStepFinish = new FileWriter("output.txt");// Запись числа в файл
-        countStepFinish.write(String.valueOf(s));
-        countStepFinish.close();
     }
 }

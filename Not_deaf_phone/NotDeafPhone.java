@@ -1,14 +1,20 @@
 package Not_deaf_phone;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 public class NotDeafPhone {
     public static void main(String[] args) throws IOException {
-        String str;
-        FileReader fin = new FileReader("input.txt"); // Получение числа из файла
-        Scanner sc = new Scanner(fin);
-        str = sc.nextLine();
-        FileWriter countStepFinish = new FileWriter("output.txt");// Запись числа в файл
-        countStepFinish.write(str);
-        countStepFinish.close();
+        try {
+            FileOutputStream fos = new FileOutputStream("output.txt");
+            FileReader fr = new FileReader("input.txt");
+            Scanner n = new Scanner(fr);
+            String str = "";
+            str = n.nextLine();
+            n.close();
+            fos.write(str.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
